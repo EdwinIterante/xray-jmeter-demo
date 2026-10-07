@@ -4,6 +4,7 @@ pipeline {
     environment {
         JMETER    = 'C:\\apache-jmeter-5.6.3\\apache-jmeter-5.6.3\\bin\\jmeter.bat'
         TS_PREFIX = 'jmeter.jpetstore'
+        PYTHON = 'C:\\Program Files\\Python314\\python.exe'
     }
 
     stages {
@@ -18,7 +19,7 @@ pipeline {
             steps {
                 bat 'java -version'
                 bat '"%JMETER%" --version'
-                bat 'python --version'
+                bat '"%PYTHON%" --version'
             }
         }
 
@@ -34,7 +35,7 @@ pipeline {
 
         stage('4. Convertir resultados a JUnit XML') {
             steps {
-                bat 'python jtl_to_junit.py results.jtl junit.xml %TS_PREFIX%'
+                bat '"%PYTHON%" jtl_to_junit.py results.jtl junit.xml %TS_PREFIX%'
                 bat '''
                     if not exist junit.xml (
                         echo ERROR: no se genero junit.xml
