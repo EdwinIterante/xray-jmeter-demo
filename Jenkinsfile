@@ -4,7 +4,7 @@ pipeline {
     environment {
         JMETER    = 'C:\\apache-jmeter-5.6.3\\apache-jmeter-5.6.3\\bin\\jmeter.bat'
         TS_PREFIX = 'jmeter.jpetstore'
-        PYTHON = 'C:\\Program Files\\Python314\\python.exe'
+        PYTHON    = 'C:\\Program Files\\Python314\\python.exe'
     }
 
     stages {
@@ -62,13 +62,13 @@ pipeline {
                         "fields": {
                             "project": { "key": "DX" },
                             "summary": "JMeter jpetstore - build #${env.BUILD_NUMBER}",
-                            "description": "Build Jenkins: ${env.BUILD_URL} | Dashboard JMeter: ${env.BUILD_URL}artifact/report/index.html",
+                            "description": "*Build Jenkins:* [Build #${env.BUILD_NUMBER}|${env.BUILD_URL}]\\n*Dashboard JMeter:* [Abrir dashboard|${env.BUILD_URL}artifact/report/index.html]",
                             "issuetype": { "name": "Test Execution" }
                         }
                     }""",
                     testImportInfo: '',
-                    inputInfoSwitcher: 'false',
-                    inputTestInfoSwitcher: 'false',
+                    inputInfoSwitcher: 'fileContent',
+                    inputTestInfoSwitcher: 'fileContent',
                     importToSameExecution: 'false',
                     credentialId: '',
                     importInParallel: 'false'
